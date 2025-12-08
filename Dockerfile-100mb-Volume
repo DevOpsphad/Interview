@@ -1,0 +1,6 @@
+FROM ubuntu:latest
+VOLUME /data
+RUN apt update && apt install -y \
+    iputils-ping \
+    && rm -rf /var/lib/apt/lists/*
+CMD ["bash","-c","dd if=/dev/zero of=/data/volume_file.bin bs=1M count=100 && bash"]
