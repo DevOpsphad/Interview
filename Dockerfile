@@ -1,10 +1,9 @@
-FROM ubuntu
-MAINTAINER mohiniphad78@gmail.com
+FROM ubuntu:20.04
+MAINTAINER = "mohinhad78@gmail.com"
 
-RUN apt-get update && apt-get install nginx /
-    cd /var/www/html/index.html /
-    echo "this is nginx server" >index.html
-    
+RUN apt-get update &&\
+    apt-get install nginx -y\
+    rm -rf /var/lib/apt/lists/*
+RUN echo "this is nginx server" > /var/www/html/index.html
 EXPOSE 80
-ENTRYPOINT
-CMD ["bash"]
+CMD ["nginx","-g","deamon off;"]
